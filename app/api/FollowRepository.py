@@ -43,8 +43,8 @@ class FollowRepository(Resource):
         self.jwt = jwt
 
     @jwt_required()
-    def post(self):
-        req_data = request.get_json()
+    def get(self):
+        req_data = request.args.get("repo")
         repo = req_data.get("repo")
 
         current_user = get_jwt_identity()
